@@ -312,7 +312,7 @@ static int __init read_f_mode(char *str)
 __setup("f_mode=", read_f_mode);
 #endif
 
-inline void battery_wakeup_source_init(struct device *dev, struct wakeup_source **ws, const char *name)
+void battery_wakeup_source_init(struct device *dev, struct wakeup_source **ws, const char *name)
 {
 #if !defined(CONFIG_SUPPORT_WAKEUP_REGISTER) && LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
 	// 4.19 R
