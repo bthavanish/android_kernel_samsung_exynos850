@@ -94,6 +94,19 @@ char *strcpy(char *dest, const char *src)
 	return tmp;
 }
 EXPORT_SYMBOL(strcpy);
+
+/**
+ * stpcpy - Copy a %NUL terminated string and return pointer to end
+ * @dest: Where to copy the string to
+ * @src: Where to copy the string from
+ */
+char *stpcpy(char *dest, const char *src)
+{
+	while ((*dest++ = *src++) != '\0')
+		/* nothing */;
+	return dest - 1;
+}
+EXPORT_SYMBOL(stpcpy);
 #endif
 
 #ifndef __HAVE_ARCH_STRNCPY

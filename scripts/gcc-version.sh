@@ -17,6 +17,16 @@ fi
 
 compiler="$*"
 
+# Clang shim: detect clang and return compatible version number
+if [ -n "$compiler" ] && $compiler --version 2>&1 | grep -q "clang"; then
+	if [ "x$with_patchlevel" != "x" ] ; then
+		echo "140007"
+	else
+		echo "140000"
+	fi
+	exit 0
+fi
+
 if [ ${#compiler} -eq 0 ]; then
 	echo "Error: No compiler specified."
 	printf "Usage:\n\t$0 <gcc-command>\n"

@@ -26,7 +26,7 @@ class IntegrityRoutine(ELF):
     """
     Utils for fips-integrity process
     """
-    def __init__(self, elf_file, readelf_path=os.environ.get('CROSS_COMPILE')+"readelf"):
+    def __init__(self, elf_file, readelf_path=os.environ.get('READELF') or '/usr/bin/aarch64-linux-gnu-readelf'):
         ELF.__init__(self, elf_file, readelf_path)
 
     @staticmethod

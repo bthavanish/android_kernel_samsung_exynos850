@@ -77,14 +77,22 @@ struct user_pt_regs {
 };
 
 struct user_fpsimd_state {
+#ifdef __ILP32__
+	__u64		vregs[64];
+#else
 	__uint128_t	vregs[32];
+#endif
 	__u32		fpsr;
 	__u32		fpcr;
 	__u32		__reserved[2];
 };
 
 struct fpsimd_kernel_state {
+#ifdef __ILP32__
+	__u64 vregs[64];
+#else
 	__uint128_t vregs[32];
+#endif
 	__u32 fpsr;
 	__u32 fpcr;
 	unsigned int cpu;
